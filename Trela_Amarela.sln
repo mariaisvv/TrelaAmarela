@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trela_Amarela", "Trela_Amarela\Trela_Amarela.csproj", "{CAAA0340-329C-419F-9C2B-656EAC7BE8ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAAA0340-329C-419F-9C2B-656EAC7BE8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAA0340-329C-419F-9C2B-656EAC7BE8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAA0340-329C-419F-9C2B-656EAC7BE8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAA0340-329C-419F-9C2B-656EAC7BE8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6471D278-F92B-4D25-9FDE-08BD5BB560A2}
+	EndGlobalSection
+EndGlobal
