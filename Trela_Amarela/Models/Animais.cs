@@ -34,33 +34,39 @@ namespace Trela_Amarela.Models
         /// </summary>
         [Required(ErrorMessage = "O Porte é de preenchimento obrigatório")]
         public string Porte { get; set; }
+        [Display(Name = "Porte do Animal")]
 
         /// Raça do Animal
         /// </summary>
         [Required(ErrorMessage = "A raça é de preenchimento obrigatório")]
         [StringLength(60, ErrorMessage = "A raça não pode ter mais de 60 caracteres.")]
         public string Raca { get; set; }
+        [Display(Name = "Raça")]
 
         /// Vacinação do Animal
         /// </summary>
         [Required(ErrorMessage = "A vacinação é de preenchimento obrigatório")]
         public string Vacinacao { get; set; }
+        [Display(Name = "Vacinação")]
 
         /// Desparasitação do Animal
         /// </summary>
         [Required(ErrorMessage = "A desparasitação é de preenchimento obrigatório")]
         public string Desparasitacao{ get; set; }
+        [Display(Name = "Desparasitação")]
 
         /// Necessidades especiais do Animal
         /// </summary>
         [Required(ErrorMessage = "As necessidades especiais são de preenchimento obrigatório")]
         public string N_Especiais { get; set; }
+        [Display(Name = "Necessidades Especiais")]
 
         /// Numero de registo do Animal
         /// </summary>
         [Required(ErrorMessage = "O número de registo é de preenchimento obrigatório")]
         [StringLength(60, ErrorMessage = "O número de registo não pode ter mais de 60 caracteres.")]
         public string Nr_registo { get; set; }
+        [Display(Name = "Número de Registo")]
 
 
         /// <summary>
@@ -69,6 +75,7 @@ namespace Trela_Amarela.Models
         [Required(ErrorMessage = "O número de chip é de preenchimento obrigatório")]
         [StringLength(60, ErrorMessage = "O número de chip não pode ter mais de 60 caracteres.")]
         public string Nr_chip { get; set; }
+        [Display(Name = "Número de Chip")]
         /// <summary>
         /// Foto do Animal
         /// </summary>
