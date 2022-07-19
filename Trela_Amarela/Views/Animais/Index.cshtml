@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<Trela_Amarela.Models.Animais>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista";
 }
 
-<h1>Index</h1>
+<h1>Animais Registados</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar </a>
 </p>
 <table class="table">
     <thead>
         <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -39,18 +42,29 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nr_chip)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Foto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+              @*apresenta a imagem do animal, caso exista, com link para os respetivos detalhes*@
+                    @if (!string.IsNullOrEmpty(item.Foto))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.IdAnimal">
+                            <img src="~/fotos/@item.Foto"
+                                 alt="@Html.DisplayFor(modelItem => item.Nome)"
+                                 title="@item.Nome" height="64" />
+                        </a>
+                    }
+                    else
+                    {
+                        @* se a imagem não existir mostra o nome*@
+                        @Html.DisplayFor(modelItem => item.Nome);
+                    }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
@@ -78,16 +92,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nr_chip)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Foto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.CodPostal)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAnimal">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAnimal">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAnimal">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdAnimal">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAnimal">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAnimal">Apagar</a>
             </td>
         </tr>
 }

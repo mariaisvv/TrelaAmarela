@@ -4,13 +4,13 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar Reserva</h1>
 
 <h4>Reservas</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="D_Entrada" class="control-label"></label>
@@ -22,33 +22,35 @@
                 <input asp-for="D_Saida" class="form-control" />
                 <span asp-validation-for="D_Saida" class="text-danger"></span>
             </div>
-            <div class="form-group">
+       @*     <div class="form-group">
                 <label asp-for="Nr_animais" class="control-label"></label>
                 <input asp-for="Nr_animais" class="form-control" />
                 <span asp-validation-for="Nr_animais" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Nr_registo" class="control-label"></label>
                 <input asp-for="Nr_registo" class="form-control" />
                 <span asp-validation-for="Nr_registo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCliente" class="control-label"></label>
-                <select asp-for="IdCliente" class ="form-control" asp-items="ViewBag.IdCliente"></select>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdBox" class="control-label"></label>
                 <select asp-for="IdBox" class ="form-control" asp-items="ViewBag.IdBox"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label class="control-label">Animais</label>
+                @foreach (Animais item in ViewBag.ListaAnimais) {
+            <br /> <input type="checkbox" value="@item.IdAnimal" name="AnimalEscolhido" /> @item.Nome
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar nova reserva" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

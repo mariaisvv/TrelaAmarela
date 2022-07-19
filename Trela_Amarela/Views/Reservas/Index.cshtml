@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Reservas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar nova reserva</a>
 </p>
 <table class="table">
     <thead>
@@ -24,11 +24,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nr_registo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Box)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaAnimais)
             </th>
             <th></th>
         </tr>
@@ -49,15 +50,21 @@
                 @Html.DisplayFor(modelItem => item.Nr_registo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cliente.CodPostal)
+                @Html.DisplayFor(modelItem => item.Box.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Box.IdBox)
-            </td>
+                    @foreach (var animal in item.ListaAnimais)
+                        {
+                            <span>
+                                @animal.Nome <br />
+                            </span>
+                        }
+                </td>
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdReserva">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdReserva">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdReserva">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdReserva">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdReserva">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdReserva">Eliminar</a>
             </td>
         </tr>
 }

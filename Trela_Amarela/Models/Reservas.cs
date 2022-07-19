@@ -34,6 +34,7 @@ namespace Trela_Amarela.Models
         /// Numero de animais
         /// </summary>
         [Required(ErrorMessage = "O número de animais é de preenchimento obrigatório")]
+        [Display(Name = "Número de Animais")]
         public int Nr_animais { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace Trela_Amarela.Models
         /// </summary>
         [Required(ErrorMessage = "O número de registo é de preenchimento obrigatório")]
         [StringLength(60, ErrorMessage = "O número de registo não pode ter mais de 60 caracteres.")]
+        [Display(Name = "Número de Registo")]
         public string Nr_registo { get; set; }
 
         //********************************************************************************
@@ -59,8 +61,11 @@ namespace Trela_Amarela.Models
         /// <summary>
         /// FK para identificar a box
         /// </summary>
+        /// 
+        [Display(Name = "Box")]
         [ForeignKey(nameof(Box))]
         public int IdBox { get; set; } 
+
         public Boxs Box { get; set; }
 
         //********************************************************************************

@@ -1,16 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
 
 namespace Trela_Amarela.Models
 {
-    public class Animais
+    public class AnimaisAPIviewModel
     {
-        public Animais()
-        {
-            ListaReservas = new HashSet<Reservas>();
-        }
-
 
         /// <summary>
         /// Identificador do Animal
@@ -43,28 +36,28 @@ namespace Trela_Amarela.Models
         [StringLength(60, ErrorMessage = "A raça não pode ter mais de 60 caracteres.")]
         [Display(Name = "Raça")]
         public string Raca { get; set; }
-    
+
 
         /// Vacinação do Animal
         /// </summary>
         [Required(ErrorMessage = "A vacinação é de preenchimento obrigatório")]
         [Display(Name = "Vacinação")]
         public string Vacinacao { get; set; }
-        
+
 
         /// Desparasitação do Animal
         /// </summary>
         [Required(ErrorMessage = "A desparasitação é de preenchimento obrigatório")]
         [Display(Name = "Desparasitação")]
-        public string Desparasitacao{ get; set; }
-        
+        public string Desparasitacao { get; set; }
+
 
         /// Necessidades especiais do Animal
         /// </summary>
         [Required(ErrorMessage = "As necessidades especiais são de preenchimento obrigatório")]
         [Display(Name = "Necessidades Especiais")]
         public string N_Especiais { get; set; }
-    
+
 
         /// Numero de registo do Animal
         /// </summary>
@@ -72,7 +65,7 @@ namespace Trela_Amarela.Models
         [StringLength(60, ErrorMessage = "O número de registo não pode ter mais de 60 caracteres.")]
         [Display(Name = "Número de Registo")]
         public string Nr_registo { get; set; }
-       
+
 
 
         /// <summary>
@@ -82,26 +75,13 @@ namespace Trela_Amarela.Models
         [StringLength(60, ErrorMessage = "O número de chip não pode ter mais de 60 caracteres.")]
         [Display(Name = "Número de Chip")]
         public string Nr_chip { get; set; }
- 
+
         /// <summary>
         /// Foto do Animal
         /// </summary>
         public string Foto { get; set; }
 
 
-        //********************************************************************************
-        public ICollection<Reservas> ListaReservas { get; set; }
 
-        //********************************************************************************
-
-        /// <summary>
-        /// FK para identificar o CLiente
-        /// </summary>
-        [ForeignKey(nameof(Cliente))]
-        public int IdCliente { get; set; }
-        public Clientes Cliente { get; set; }
-
-        //********************************************************************************
     }
-
 }
