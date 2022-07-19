@@ -98,7 +98,7 @@ namespace Trela_Amarela.Controllers.API
         // POST: API/AnimaisAPI
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Animais>> PostVeiculos([FromForm] Animais animal)
+        public async Task<ActionResult<Animais>> PostAnimais([FromForm] Animais animal)
         {
 
             animal.IdCliente = 3;

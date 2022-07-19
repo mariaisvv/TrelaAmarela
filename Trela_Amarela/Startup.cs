@@ -21,13 +21,9 @@ namespace Trela_Amarela
             {
                 roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
             }
-            var roleCheck2 = roleManager.RoleExistsAsync("Gestor").Result;
+           
+            var roleCheck2 = roleManager.RoleExistsAsync("Cliente").Result;
             if (!roleCheck2)
-            {
-                roleManager.CreateAsync(new IdentityRole("Gestor")).Wait();
-            }
-            var roleCheck3 = roleManager.RoleExistsAsync("Cliente").Result;
-            if (!roleCheck3)
             {
                 roleManager.CreateAsync(new IdentityRole("Cliente")).Wait();
             }
