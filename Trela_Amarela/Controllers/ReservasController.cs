@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Trela_Amarela.Models;
 
 namespace Trela_Amarela.Controllers
 {
+    [Authorize] // esta 'anotação' garante que só as pessoas autenticadas têm acesso aos recursos
     public class ReservasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -29,16 +31,29 @@ namespace Trela_Amarela.Controllers
         // GET: Reservas
         public async Task<IActionResult> Index()
         {
-            // var. auxiliar
-            string idDaPessoaAutenticada = _userManager.GetUserId(User);
-            // quais as reservas que pertencem à pessoa que está autenticada?
-            var reservas = await (from r in _context.Reservas.Include(r => r.ListaAnimais).Include(r => r.Box)
-                                    join c in _context.Clientes on r.IdCliente equals c.IdCliente
-                                    join u in _context.Users on c.Email equals u.Email
-                                    where u.Id == idDaPessoaAutenticada
-                                    select r)
-                             .ToListAsync();
-            return View( reservas);
+            if (User.IsInRole("Admin"))
+            {
+                var reservas = await _context.Reservas
+                                            .Include(r => r.ListaAnimais)
+                                            .Include(r => r.Box)
+                                            .ToListAsync();
+
+                return View(reservas);
+            }
+            else
+            {
+
+                // var. auxiliar
+                string idDaPessoaAutenticada = _userManager.GetUserId(User);
+                // quais as reservas que pertencem à pessoa que está autenticada?
+                var reservas = await (from r in _context.Reservas.Include(r => r.ListaAnimais).Include(r => r.Box)
+                                      join c in _context.Clientes on r.IdCliente equals c.IdCliente
+                                      join u in _context.Users on c.Email equals u.Email
+                                      where u.Id == idDaPessoaAutenticada
+                                      select r)
+                                 .ToListAsync();
+                return View(reservas);
+            }
         }
 
         // GET: Reservas/Details/5

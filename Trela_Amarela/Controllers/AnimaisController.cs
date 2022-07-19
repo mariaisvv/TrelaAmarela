@@ -13,6 +13,7 @@ using Trela_Amarela.Models;
 
 namespace Trela_Amarela.Controllers
 {
+    [Authorize] // esta 'anotação' garante que só as pessoas autenticadas têm acesso aos recursos
     public class AnimaisController : Controller
     {
         private readonly ApplicationDbContext _context;
